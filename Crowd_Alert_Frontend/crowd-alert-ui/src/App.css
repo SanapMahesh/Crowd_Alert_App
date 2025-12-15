@@ -1,0 +1,249 @@
+/* src/App.css */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+/* Map takes full screen */
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1; /* Behind sidebar */
+}
+
+.leaflet-container {
+  height: 100% !important;
+  width: 100%;
+}
+
+/* Floating Sidebar (Glassmorphism) */
+.sidebar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 320px;
+  max-height: 90vh;
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Blur effect */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* On top of map */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: #1a1a1a;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #ff4757;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  color: #555;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box; /* Fix width issues */
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff4757;
+  box-shadow: 0 0 5px rgba(255, 71, 87, 0.3);
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #ff4757, #ff6b81);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 71, 87, 0.4);
+}
+
+/* Search Box Container */
+.search-box {
+  display: flex;
+  gap: 8px;
+}
+.search-box button {
+  width: auto;
+  background: #2ed573;
+}
+
+/* Form Labels */
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Popup Badges */
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+.badge.traffic { background: #ffa502; }
+.badge.accident { background: #ff4757; }
+.badge.fire { background: #ff6b81; }
+.badge.flood { background: #1e90ff; }
+
+/* --- LOGIN PAGE STYLES --- */
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Dark Satellite-like Background */
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+              url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/4/5/10');
+  background-size: cover;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  width: 350px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.logo-text {
+  color: #ff4757;
+  margin-bottom: 5px;
+  font-size: 2rem;
+}
+
+.login-box p {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 0.85rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #ff4757;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background: #ff2e42;
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #888;
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* --- NOTIFICATION BANNER --- */
+.notification-banner {
+  position: fixed;
+  top: -100px; /* Hidden by default */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff4757; /* Red Alert */
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(255, 71, 87, 0.5);
+  z-index: 9999; /* On top of everything */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: top 0.5s ease-in-out; /* Smooth Slide Effect */
+  min-width: 300px;
+  justify-content: center;
+}
+
+.notification-banner.show {
+  top: 30px; /* Slide down to visible position */
+}
+
+.notification-icon {
+  font-size: 1.5rem;
+}
