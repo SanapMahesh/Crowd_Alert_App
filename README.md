@@ -59,39 +59,62 @@ Open PostgreSQL (CLI or pgAdmin) and run:
 CREATE DATABASE crowdalert;
 \c crowdalert;
 CREATE EXTENSION postgis;
-Step 3: Backend Setup
-Navigate to backend directory:
 
+
+### **Step 3: Backend Setup**
+1️⃣ Navigate to Backend Directory
 cd backend
-Configure database in
-src/main/resources/application.properties:
 
-properties
+2️⃣ Configure Database
+
+Edit the file below:
+
+src/main/resources/application.properties
+
+
+Add your PostgreSQL configuration:
+
 spring.datasource.url=jdbc:postgresql://localhost:5432/crowdalert
 spring.datasource.username=postgres
 spring.datasource.password=YOUR_DB_PASSWORD
+
 spring.jpa.hibernate.ddl-auto=update
-Run backend server:
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
 
+
+⚠️ Make sure PostgreSQL is running and the crowdalert database exists.
+
+3️⃣ Run Backend Server
 mvn spring-boot:run
-Backend URL: http://localhost:8080
 
-Step 4: Frontend Setup
-Navigate to frontend directory:
+4️⃣ Backend URL
+http://localhost:8080
+
+### **Step 4: Frontend Setup**
+1️⃣ Navigate to Frontend Directory
 cd frontend
 
-Install dependencies and start server:
+2️⃣ Install Dependencies
 npm install
+
+3️⃣ Start Development Server
 npm run dev
-Frontend URL: http://localhost:5173
 
-Step 5: Access & Use Application
-Open browser and visit http://localhost:5173
+4️⃣ Frontend URL
+http://localhost:5173
 
-Register or login
+### **Step 5: Access & Use the Application**
 
-Allow location access
+Open your browser and visit:
 
-Report incidents on the map
+http://localhost:5173
 
-Verify incidents in real time
+
+Register a new account or log in
+
+Allow location access when prompted
+
+Report incidents directly on the map
+
+View and verify incidents in real time via live updates
